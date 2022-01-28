@@ -1,0 +1,32 @@
+.login-page {
+  display: flex;
+
+  &__form {
+    width: 300px;
+    padding: 26px;
+    height: calc(100vh);
+    form {
+      width: 100%;
+      margin-top: 32px;
+    }
+  }
+  &__bg {
+    background: url('/assets/images/bg/background-login-desktop.png') center / cover no-repeat content-box;
+    width: 100%;
+  }
+}
+.login-form {
+  max-width: 300px;
+}
+
+.login-form-margin {
+  margin-bottom: 16px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}

@@ -15,12 +15,15 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
+import {AppRoutingModule} from './app-routing.module';
+import { LayoutComponent } from './layout/layout.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ registerLocaleData(en);
     FormsModule,
     BrowserAnimationsModule,
     RouterModule,
+    AppRoutingModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

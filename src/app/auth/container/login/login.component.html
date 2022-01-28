@@ -1,0 +1,31 @@
+<div class="login-page">
+  <div class="login-page__form">
+    <div>
+      <img src="/assets/images/brand/logo_tul_color.png" alt="">
+    </div>
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <h2>Ingresar</h2>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Ingresar tu usuario!">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="userName" placeholder="correo electrónico"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Ingresar tu contraseña!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="password" placeholder="Contraseña"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <div nz-row class="login-form-margin">
+        <div nz-col [nzSpan]="24">
+          <a class="login-form-forgot">Recuperar contraseña</a>
+        </div>
+      </div>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+    </form>
+  </div>
+  <div class="login-page__bg"></div>
+</div>
