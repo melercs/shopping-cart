@@ -20,7 +20,7 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "allowedCommonJsDependencies": [
-              "lodash"
+              "rxjs-compat"
             ],
             "assets": [
               "src/favicon.ico",
