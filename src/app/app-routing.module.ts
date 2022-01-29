@@ -7,7 +7,18 @@ import {BrowserModule} from '@angular/platform-browser';
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'producto',
+        pathMatch: 'full'
+      },
+      {
+        path: 'producto',
+        loadChildren: () => import('./modules/products/products.module').then(modules => modules.ProductsModule)
+      }
+    ]
   },
   {
     path: 'auth',
