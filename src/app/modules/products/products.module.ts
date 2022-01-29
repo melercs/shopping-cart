@@ -4,6 +4,7 @@ import {ProductGridComponent} from './container/product-grid/product-grid.compon
 import {ProductCardComponent} from './components/product-card/product-card.component';
 import {ProductsRoutingModule} from './products-routing.module';
 import {NzCardModule} from 'ng-zorro-antd/card';
+import {NzButtonModule} from 'ng-zorro-antd/button';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {NzCardModule} from 'ng-zorro-antd/card';
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    NzCardModule
+    NzCardModule,
+    NzButtonModule
   ]
 })
 export class ProductsModule { }

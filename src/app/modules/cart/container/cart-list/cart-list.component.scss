@@ -1,0 +1,24 @@
+.cart-list {
+  margin: auto;
+  padding: 2.5em 0px;
+
+  &__left-column {
+    background: #ffffff;
+  }
+
+  &__head {
+    border-bottom: solid 1px #f4f4f4;
+    padding: 0 32px;
+    h2 {
+      margin-top: 0.5em;
+    }
+  }
+
+  &__items {
+    padding: 0 32px;
+  }
+
+  &__summary-purchase {
+    background: #ffffff;
+  }
+}
