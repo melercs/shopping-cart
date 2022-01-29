@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "shopping-cart-tul-1f043": {
+      "hosting": {
+        "webapp-tul": [
+          "shopping-cart-tul-1f043"
+        ]
+      }
+    }
+  }
+}

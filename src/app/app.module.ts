@@ -18,6 +18,8 @@ import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 import {LayoutComponent} from './layout/layout.component';
 import {NzLayoutModule} from 'ng-zorro-antd/layout';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 registerLocaleData(en);
 
@@ -35,9 +37,10 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     RouterModule,
     AppRoutingModule,
-    NzLayoutModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    NzLayoutModule
   ],
-  providers: [{provide: NZ_I18N, useValue: en_US}],
+  providers: [{provide: NZ_I18N, useValue: en_US}, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule {
