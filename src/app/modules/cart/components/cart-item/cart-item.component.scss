@@ -1,14 +1,23 @@
 .cart-item {
   padding-top: 20px;
-  border-bottom: solid 1px #f4f4f4;
   &__img {
     max-height: 90px;
   }
   &__product-name {
     margin-bottom: 0;
   }
+  &__btn-delete {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .text-right {
   text-align: right;
+}
+
+nz-divider {
+  margin: 5px 0;
 }
