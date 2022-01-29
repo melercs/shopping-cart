@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthorizationService} from '../auth/services/authorization.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authorizationService: AuthorizationService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  logout(): void {
+    this.authorizationService.logout();
   }
 
 }

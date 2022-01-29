@@ -1,0 +1,21 @@
+
+.ant-layout-header {
+  display: flex;
+  justify-content: center;
+}
+.mcs-header {
+  display: flex;
+  &__w-logo {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2em;
+  }
+  &__w-menu {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    & >a {
+      color: #f4f4f4;
+    }
+  }
+}

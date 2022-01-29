@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthorizationService} from '../../services/authorization.service';
+import {DeactivateLoadingAction} from '../../../../state/actions/ui-loading.actions';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../../../state/app.state';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,29 +12,46 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  validateForm!: FormGroup;
+  loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  display: boolean = false;
+  error!: string;
+
+  constructor(
+    private fb: FormBuilder,
+    private authorizationService: AuthorizationService,
+    public store: Store<AppState>,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
+    this.loginForm = this.fb.group({
+      email: [null, [Validators.required]],
       password: [null, [Validators.required]],
       remember: [true]
     });
   }
 
   submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
-    } else {
-      Object.values(this.validateForm.controls).forEach(control => {
+    if (!this.loginForm.valid) {
+      Object.values(this.loginForm.controls).forEach(control => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
         }
       });
+      return;
     }
+    const {email, password} = this.loginForm.value;
+    this.authorizationService.login(email, password).catch(err => {
+      this.error = err.message;
+      this.display = true;
+      this.store.dispatch( new DeactivateLoadingAction() );
+    });
+  }
+
+  goToRegister(): void {
+    this.router.navigate(['auth/registro']);
   }
 
 }

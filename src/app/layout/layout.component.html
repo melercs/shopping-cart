@@ -1,5 +1,17 @@
 <nz-layout>
-  <nz-header>header</nz-header>
+  <nz-header>
+    <div class="mcs-container mcs-header">
+      <div class="mcs-header__w-logo">
+        TUL
+      </div>
+      <div class="mcs-header__w-menu">
+        <a nz-dropdown [nzDropdownMenu]="menuUser">
+          Mi cuenta
+          <i nz-icon nzType="down"></i>
+        </a>
+      </div>
+    </div>
+  </nz-header>
   <nz-layout>
     <nz-content>
       <router-outlet></router-outlet>
@@ -7,3 +19,11 @@
   </nz-layout>
   <nz-footer>footer</nz-footer>
 </nz-layout>
+
+<nz-dropdown-menu #menuUser="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>Perfil</li>
+    <li nz-menu-item>Historial de compras</li>
+    <li nz-menu-item (click)="logout()">Cerrar sesión</li>
+  </ul>
+</nz-dropdown-menu>
