@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ProductGridComponent} from './container/product-grid/product-grid.component';
 import {ProductCardComponent} from './components/product-card/product-card.component';
 import {ProductsRoutingModule} from './products-routing.module';
+import {NzCardModule} from 'ng-zorro-antd/card';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {ProductsRoutingModule} from './products-routing.module';
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    NzCardModule
   ]
 })
 export class ProductsModule { }
