@@ -2,14 +2,14 @@
   <div>
     <img
       alt="example"
-      src="/assets/images/products/arena.jfif"
+      src="{{ product?.image }}"
       class="product-card__img"
     />
   </div>
   <div class="product-card__meta">
-    <p>Taladro Percutor 18V + Atornillador de impacto 18V</p>
+    <p>{{ product?.name || '-'}}</p>
     <div class="product-card__price">
-      <span>$ 64.99</span>
+      <span>$ {{ product?.price}}</span>
       <span>C/U</span>
     </div>
   </div>
@@ -17,5 +17,6 @@
     nz-button
     nzType="primary"
     class="product-card__btn-add-cart"
+    (click)="add(product)"
   >Elegir</button>
 </nz-card>

@@ -1,10 +1,13 @@
 import {ActionReducerMap} from '@ngrx/store';
-import {itemsReducer} from './reducers/items.reducers';
+import * as fromAuthorization from './reducers/authorization.reducers';
+import * as fromUiLoading from './reducers/ui-loading.reducers';
 
 export interface AppState {
-  items: any;
+  uiLoading: fromUiLoading.UiState;
+  auth: fromAuthorization.AuthState;
 }
 
 export const ROOT_REDUCERS: ActionReducerMap<AppState> = {
-  items: itemsReducer
+  uiLoading: fromUiLoading.uiLoadingReducer,
+  auth: fromAuthorization.authorizationReducer
 };
