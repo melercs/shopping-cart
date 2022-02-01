@@ -9,7 +9,7 @@
   <div class="product-card__meta">
     <p class="product-card__name">{{ product?.name || '-'}}</p>
     <div class="product-card__price">
-      <span>$ {{ product?.price}}</span>
+      <span>{{ product?.price | currency}}</span>
       <span>C/U</span>
     </div>
   </div>

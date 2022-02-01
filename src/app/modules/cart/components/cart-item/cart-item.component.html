@@ -16,10 +16,12 @@
           [form]="form"
           [controlName]="'quantity'"
         ></app-amout-control>
-        <div class="cart-item__btn-delete">Eliminar</div>
+        <div
+          class="cart-item__btn-delete"
+        >Eliminar</div>
       </div>
       <div nz-col nzXs="12" nzSm="12" nzMd="8" nzLg="8" nzXl="8" class="text-right">
-        <span>$ {{ data?.price }} </span>
+        <span>{{ data?.price | currency }} </span>
         <span>C/U</span>
       </div>
     </div>
@@ -29,7 +31,7 @@
         Total Producto:
       </div>
       <div nz-col nzXs="8" nzSm="6" nzMd="6" nzLg="4" nzXl="4" class="text-right">
-        $ {{ (data.quantity * this.data.price) | currency }}
+        {{ (data.quantity * this.data.price) | currency }}
       </div>
     </div>
   </div>
