@@ -9,6 +9,7 @@
           <th>Responsable</th>
           <th>Cantidad Productos</th>
           <th>Total</th>
+          <th>Estado</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -17,6 +18,7 @@
           <td>{{ user.username }}</td>
           <td>{{ data.products.length }}</td>
           <td>{{ data.totalPrice | currency }}</td>
+          <td>{{ data.state }}</td>
           <td>
             <a>Ver detalle</a>
           </td>
