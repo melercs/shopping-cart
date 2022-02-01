@@ -16,7 +16,7 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'producto',
+        path: 'productos',
         loadChildren: () => import('./modules/products/products.module').then(modules => modules.ProductsModule),
         canLoad: [AuthorizationGuard]
       },

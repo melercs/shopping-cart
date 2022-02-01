@@ -4,12 +4,12 @@
   justify-content: center;
 }
 
+.ant-layout-content {
+  height: calc(100vh - 120px);
+}
+
 app-navbar {
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.badge {
-  position: absolute;
 }

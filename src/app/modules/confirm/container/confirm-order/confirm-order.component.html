@@ -1,16 +1,12 @@
 <div class="confirm-order mcs-container">
-  <div>
-    <p>
-      <i
-        nz-icon
-        nzType="check-circle"
-        nzTheme="outline"
-        class="confirm-order__icon"
-      ></i>
-    </p>
-    <h3>
-      Tu orden se genero con éxito.
-    </h3>
-    <p>Puedes consultar el estado de tu orden en la opción <b>Ordenes</b> del menu</p>
-  </div>
+  <nz-result
+    nzStatus="success"
+    nzTitle="Tu orden se generó con éxito.!"
+    nzSubTitle=""
+  >
+    <div nz-result-extra>
+      <a nz-button nzType="primary" routerLink="/mis-ordenes">Consultar estado</a>
+      <a nz-button routerLink="/productos">Ir a productos</a>
+    </div>
+  </nz-result>
 </div>
