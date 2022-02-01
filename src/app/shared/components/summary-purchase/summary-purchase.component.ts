@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-summary-purchase',
@@ -7,10 +7,19 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SummaryPurchaseComponent implements OnInit {
 
+  @Input() total;
   @Input() title = 'Resumen de tu compra';
-  constructor() { }
+  @Input() textButton = 'Continuar';
+  @Output() onClick = new EventEmitter<boolean>();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  onClickHandler(): void {
+    this.onClick.emit(true);
   }
 
 }

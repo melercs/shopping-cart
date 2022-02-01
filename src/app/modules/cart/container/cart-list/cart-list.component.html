@@ -14,7 +14,10 @@
       </div>
     </div>
     <div class="cart_list__summary-purchase" nz-col nzXs="24" nzSm="24" nzMd="6" nzLg="6" nzXl="6">
-      <app-summary-purchase></app-summary-purchase>
+      <app-summary-purchase
+        [total]="total"
+        (onClick)="createOrder()"
+      ></app-summary-purchase>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from '../auth/services/authorization.service';
+import {CartService} from '../modules/cart/services/cart.service';
 
 @Component({
   selector: 'app-layout',
@@ -9,10 +10,13 @@ import {AuthorizationService} from '../auth/services/authorization.service';
 export class LayoutComponent implements OnInit {
 
   constructor(
-    private authorizationService: AuthorizationService
+    private authorizationService: AuthorizationService,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
+    this.cartService.initCart();
+    this.cartService.getListCarts();
   }
 
   logout(): void {

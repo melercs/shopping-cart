@@ -29,7 +29,7 @@ export class AuthorizationService {
   initAuth(): void {
     this.afAuth.authState.subscribe((fbUser: firebase.default.User) => {
       if (fbUser) {
-        this.userSubscription = this.afDB.doc(`${fbUser.uid}/usuario`)
+        this.userSubscription = this.afDB.doc(`Usuario/${fbUser.uid}`)
           .valueChanges()
           .subscribe((usuarioObj: UserObject) => {
             const newUser = new User(usuarioObj);
@@ -54,7 +54,7 @@ export class AuthorizationService {
           username
         };
         this.afDB
-          .doc(`${user.uid}/usuario`)
+          .doc(`Usuario/${user.uid}`)
           .set(user)
           .then(() => {
             this.router.navigate(['/']);

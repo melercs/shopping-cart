@@ -15,6 +15,8 @@ export class UnsetCartProdutsAction implements Action {
   readonly type = UN_SET_CART_PRODUCTS;
 }
 
-export class ChangeCarStatuAction implements Action {
+export class ChangeCarStatusAction implements Action {
   readonly type = CHANGE_CAR_STATUS;
 }
+
+export type actions = SelectAllProductCart | UnsetCartProdutsAction | ChangeCarStatusAction;
