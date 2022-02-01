@@ -46,7 +46,7 @@ export class ProductGridComponent implements OnInit {
     this.authorizationService.isAuth()
       .subscribe( auth => {
         if ( auth ){
-          this.cartService.addCart(product);
+          this.cartService.addCart({...product, quantity: 1});
         } else {
           this.router.navigate(['/auth/login']);
         }

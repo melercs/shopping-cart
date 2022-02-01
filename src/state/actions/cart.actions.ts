@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {Product} from '../../app/modules/products/models/product.model';
+import {ItemCart} from '../../app/modules/cart/models/cart.models';
 
 
 export const SET_CART_PRODUCTS = '[Order-Carts] Set Order Products';
@@ -8,7 +8,7 @@ export const  CHANGE_CAR_STATUS = '[Order-Carts] Cart completed';
 
 export class SelectAllProductCart implements Action {
   readonly type = SET_CART_PRODUCTS;
-  constructor(public products: Product[]) {}
+  constructor(public products: ItemCart[]) {}
 }
 
 export class UnsetCartProdutsAction implements Action {

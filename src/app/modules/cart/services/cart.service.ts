@@ -9,7 +9,8 @@ import {Product} from '../../products/models/product.model';
 import {AppState} from '../../../../state/app.state';
 import {SelectAllProductCart} from '../../../../state/actions/cart.actions';
 import {User} from '../../../auth/models/user.model';
-import {Cart} from '../models/cart.models';
+import {Cart, ItemCart} from '../models/cart.models';
+import {sumCollection} from '../../../shared/utils/mcs-match';
 
 
 @Injectable({
@@ -57,11 +58,11 @@ export class CartService {
     });
   }
 
-  addCart(product: Product): void {
+  addCart(itemCart: ItemCart): void {
     const user = this.authorizationService.getUser();
     this.afs.doc(`Cart/${user.uid}/`)
       .collection('products')
-      .add({...product});
+      .add({...itemCart});
   }
 
   deleteItemCart(product: Product): Promise<any> {
@@ -82,16 +83,16 @@ export class CartService {
     });
   }
 
-  createOrder(products: Product[]): Promise<any> {
+  createOrder(productsCarrito: ItemCart[]): Promise<any> {
     const user = this.authorizationService.getUser();
+    const totalPrice = sumCollection(productsCarrito, 'price', 'quantity');
     this.cart = {
       id: user.uid,
-      products,
-      quantity: products.length,
-      state: false
+      products: productsCarrito,
+      totalPrice,
+      state: 'pending'
     };
-
-    return this.afs.doc(`${user.uid}/order/`)
+    return this.afs.doc(`order/${user.uid}/`)
       .collection('carts').add({...this.cart});
   }
 
@@ -103,7 +104,6 @@ export class CartService {
         .snapshotChanges()
         .pipe(
           map(docData => {
-            console.log(docData);
             return docData.map((doc: any) => {
               return {
                 id: doc.payload.doc.id,

@@ -5,7 +5,7 @@ import {AppState} from '../../../../../state/app.state';
 import {Product} from '../../../products/models/product.model';
 import {CartService} from '../../services/cart.service';
 import {ChangeCarStatusAction} from '../../../../../state/actions/cart.actions';
-import {reduce} from 'rxjs/operators';
+import {ItemCart} from '../../models/cart.models';
 
 
 @Component({
@@ -15,7 +15,7 @@ import {reduce} from 'rxjs/operators';
 })
 export class CartListComponent implements OnInit {
 
-  products: Product[] = [];
+  itemsCart: ItemCart[] = [];
   total;
   constructor(
     private store: Store<AppState>,
@@ -30,9 +30,8 @@ export class CartListComponent implements OnInit {
 
   getProducts(): void {
     this.store.select('cart').subscribe(data => {
-      this.products = data.products;
-      this.total = this.getTotalPrice(this.products);
-      console.log('aaaa', this.total);
+      this.itemsCart = data.products;
+      this.total = this.getTotalPrice(this.itemsCart);
     });
   }
 
@@ -48,12 +47,12 @@ export class CartListComponent implements OnInit {
   }
 
   createOrder(): void {
-    if (this.products.length === 0) {
+    if (this.itemsCart.length === 0) {
       return;
     }
 
-    this.cartService.createOrder(this.products);
-    this.router.navigate(['/orders']);
+    this.cartService.createOrder(this.itemsCart);
+    this.router.navigate(['/confirmacion']);
     this.cartService.deleteCart();
     this.store.dispatch( new ChangeCarStatusAction() );
   }

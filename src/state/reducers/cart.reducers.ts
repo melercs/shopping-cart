@@ -1,11 +1,11 @@
 import * as fromCartActions from '../actions/cart.actions';
-import {Product} from '../../app/modules/products/models/product.model';
+import {ItemCart} from '../../app/modules/cart/models/cart.models';
 
 
 export enum STATUS {completed, pending}
 
 export interface CartState {
-  products: Product[];
+  products: ItemCart[];
   status: STATUS;
 }
 
