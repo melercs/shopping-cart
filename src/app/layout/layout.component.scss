@@ -3,22 +3,13 @@
   display: flex;
   justify-content: center;
 }
-.mcs-header {
+
+app-navbar {
+  width: 100%;
   display: flex;
-  &__w-logo {
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 2em;
-    & > a {
-      color: #ffffff;
-    }
-  }
-  &__w-menu {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    & >a {
-      color: #f4f4f4;
-    }
-  }
+  justify-content: center;
+}
+
+.badge {
+  position: absolute;
 }

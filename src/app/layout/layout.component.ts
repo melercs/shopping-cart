@@ -19,8 +19,4 @@ export class LayoutComponent implements OnInit {
     this.cartService.getListCarts();
   }
 
-  logout(): void {
-    this.authorizationService.logout();
-  }
-
 }

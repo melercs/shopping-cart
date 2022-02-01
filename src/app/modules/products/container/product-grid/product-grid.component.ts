@@ -8,6 +8,7 @@ import {Store} from '@ngrx/store';
 import {AppState} from '../../../../../state/app.state';
 import {CartService} from '../../../cart/services/cart.service';
 import {Router} from '@angular/router';
+import {NzMessageService} from 'ng-zorro-antd/message';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class ProductGridComponent implements OnInit {
     private authorizationService: AuthorizationService,
     private cartService: CartService,
     private store: Store<AppState>,
-    private router: Router
+    private router: Router,
+    private message: NzMessageService
   ) {
   }
 
@@ -47,6 +49,7 @@ export class ProductGridComponent implements OnInit {
       .subscribe( auth => {
         if ( auth ){
           this.cartService.addCart({...product, quantity: 1});
+          this.message.create('success', 'El producto se añadio con éxito al carrito!');
         } else {
           this.router.navigate(['/auth/login']);
         }

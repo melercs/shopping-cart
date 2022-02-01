@@ -1,0 +1,29 @@
+<div class="mcs-container mcs-header">
+  <div class="mcs-header__w-logo">
+    <a href="/">TUL</a>
+  </div>
+  <div class="mcs-header__w-menu">
+    <nz-badge [nzCount]="countProductsCart" class="badge">
+      <a
+        class="mcs-header__cart-box"
+        routerLink="/carrito"
+      >
+        <i nz-icon nzType="shopping-cart" nzTheme="outline"></i>
+      </a>
+    </nz-badge>
+    <nz-divider nzType="vertical"></nz-divider>
+    <a nz-dropdown [nzDropdownMenu]="menuUser">
+      Mi cuenta
+      <i nz-icon nzType="down"></i>
+    </a>
+  </div>
+</div>
+
+
+<nz-dropdown-menu #menuUser="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>Perfil</li>
+    <li nz-menu-item routerLink="/mis-ordenes">Historial de compras</li>
+    <li nz-menu-item (click)="logout()">Cerrar sesión</li>
+  </ul>
+</nz-dropdown-menu>

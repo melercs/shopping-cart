@@ -1,16 +1,6 @@
 <nz-layout>
   <nz-header>
-    <div class="mcs-container mcs-header">
-      <div class="mcs-header__w-logo">
-        <a href="/">TUL</a>
-      </div>
-      <div class="mcs-header__w-menu">
-        <a nz-dropdown [nzDropdownMenu]="menuUser">
-          Mi cuenta
-          <i nz-icon nzType="down"></i>
-        </a>
-      </div>
-    </div>
+    <app-navbar></app-navbar>
   </nz-header>
   <nz-layout>
     <nz-content>
@@ -19,11 +9,3 @@
   </nz-layout>
   <nz-footer></nz-footer>
 </nz-layout>
-
-<nz-dropdown-menu #menuUser="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item>Perfil</li>
-    <li nz-menu-item routerLink="/mis-ordenes">Historial de compras</li>
-    <li nz-menu-item (click)="logout()">Cerrar sesión</li>
-  </ul>
-</nz-dropdown-menu>

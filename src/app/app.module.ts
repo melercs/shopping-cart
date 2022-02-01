@@ -20,8 +20,8 @@ import {LayoutComponent} from './layout/layout.component';
 import {NzLayoutModule} from 'ng-zorro-antd/layout';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
 import {NzGridModule} from 'ng-zorro-antd/grid';
+import {SharedModule} from './shared/shared.module';
 
 registerLocaleData(en);
 
@@ -41,8 +41,8 @@ registerLocaleData(en);
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     NzLayoutModule,
-    NzDropDownModule,
-    NzGridModule
+    NzGridModule,
+    SharedModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}, AngularFirestore],
   bootstrap: [AppComponent]
