@@ -7,6 +7,7 @@ import {CartService} from '../../services/cart.service';
 import {sumCollection} from '../../../../shared/utils/mcs-match';
 import {ChangeCarStatusAction} from '../../../../../state/actions/cart.actions';
 import {ItemCart} from '../../models/cart.models';
+import {NzMessageService} from 'ng-zorro-antd/message';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class CartListComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private message: NzMessageService
   ) {
   }
 
@@ -39,10 +41,9 @@ export class CartListComponent implements OnInit {
   deleteProduct(product: Product): void {
     this.cartService.deleteItemCart(product)
       .then(res => {
-        // TODO: aqui falta llamar a un servicio para lanzar un alert
+        this.message.create('success', 'El producto se elimino del carrito');
       }).catch(err => {
-        // TODO: implement traking error
-        console.log(err);
+        this.message.create('error', 'No fue posible eliminar el producto del carrito.');
       }
     );
   }

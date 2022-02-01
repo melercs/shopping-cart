@@ -10,6 +10,7 @@
             [id]="item.id"
             [itemData]="item"
             [itemsCart]="itemsCart"
+            (deleteItem)="deleteProduct($event)"
           ></app-cart-item>
           <nz-divider></nz-divider>
         </ng-container>

@@ -8,6 +8,7 @@ import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {SharedModule} from '../../shared/shared.module';
 import {NzDividerModule} from 'ng-zorro-antd/divider';
+import {NzMessageModule} from 'ng-zorro-antd/message';
 
 
 
@@ -24,6 +25,7 @@ import {NzDividerModule} from 'ng-zorro-antd/divider';
     NzInputModule,
     SharedModule,
     NzDividerModule,
+    NzMessageModule
   ]
 })
 export class CartModule { }

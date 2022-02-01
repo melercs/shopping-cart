@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../../../state/app.state';
@@ -12,19 +12,18 @@ import {ItemCart} from '../../models/cart.models';
 })
 export class CartItemComponent implements OnInit {
 
-  data;
+  data: ItemCart;
   form: FormGroup;
 
   @Input() id: string;
-
   @Input() set itemData(data: ItemCart) {
     this.data = data;
     if (data) {
       this.form.get('quantity').setValue(data.quantity);
     }
   }
-
   @Input() itemsCart: ItemCart[];
+  @Output() deleteItem = new EventEmitter<ItemCart>();
 
   constructor(
     private fb: FormBuilder,
@@ -45,6 +44,10 @@ export class CartItemComponent implements OnInit {
       });
       this.store.dispatch(new SelectAllProductCart(itemsCart));
     });
+  }
+
+  deleteItemHandler(item: ItemCart): void {
+    this.deleteItem.emit(item);
   }
 
 }
