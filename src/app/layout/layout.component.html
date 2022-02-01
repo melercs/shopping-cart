@@ -17,13 +17,13 @@
       <router-outlet></router-outlet>
     </nz-content>
   </nz-layout>
-  <nz-footer>footer</nz-footer>
+  <nz-footer></nz-footer>
 </nz-layout>
 
 <nz-dropdown-menu #menuUser="nzDropdownMenu">
   <ul nz-menu>
     <li nz-menu-item>Perfil</li>
-    <li nz-menu-item>Historial de compras</li>
+    <li nz-menu-item routerLink="/mis-ordenes">Historial de compras</li>
     <li nz-menu-item (click)="logout()">Cerrar sesión</li>
   </ul>
 </nz-dropdown-menu>

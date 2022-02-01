@@ -4,9 +4,9 @@ import {Router} from '@angular/router';
 import {AppState} from '../../../../../state/app.state';
 import {Product} from '../../../products/models/product.model';
 import {CartService} from '../../services/cart.service';
+import {sumCollection} from '../../../../shared/utils/mcs-match';
 import {ChangeCarStatusAction} from '../../../../../state/actions/cart.actions';
 import {ItemCart} from '../../models/cart.models';
-import {sumCollection} from '../../../../shared/utils/mcs-match';
 
 
 @Component({

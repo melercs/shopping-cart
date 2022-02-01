@@ -11,6 +11,7 @@ import {SelectAllProductCart} from '../../../../state/actions/cart.actions';
 import {User} from '../../../auth/models/user.model';
 import {Cart, ItemCart} from '../models/cart.models';
 import {sumCollection} from '../../../shared/utils/mcs-match';
+import {SelectAllOrderCart} from '../../../../state/actions/order.actions';
 
 
 @Injectable({
@@ -109,8 +110,9 @@ export class CartService {
               };
             });
           })
-        ).subscribe((colleccion: any[]) => {
-          this.carts = colleccion;
+        ).subscribe((dataCarts: any[]) => {
+          this.carts = dataCarts;
+          this.store.dispatch(new SelectAllOrderCart(dataCarts));
       });
     });
   }

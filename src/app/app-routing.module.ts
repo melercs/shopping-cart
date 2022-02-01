@@ -29,6 +29,11 @@ const routes: Routes = [
         path: 'confirmacion-orden',
         loadChildren: () => import('./modules/confirm/confirm.module').then(modules => modules.ConfirmModule),
         canLoad: [AuthorizationGuard]
+      },
+      {
+        path: 'mis-ordenes',
+        loadChildren: () => import('./modules/orders/orders.module').then(modules => modules.OrdersModule),
+        canLoad: [AuthorizationGuard]
       }
     ]
   },

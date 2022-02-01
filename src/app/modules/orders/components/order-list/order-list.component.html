@@ -1,0 +1,27 @@
+<div class="order-list mcs-container">
+  <div style="width: 100%">
+    <h2>Ordenes de pedido</h2>
+  </div>
+  <div style="width: 100%">
+    <nz-table #basicTable [nzData]="carts">
+      <thead>
+        <tr>
+          <th>Responsable</th>
+          <th>Cantidad Productos</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ user.username }}</td>
+          <td>{{ data.products.length }}</td>
+          <td>{{ data.totalPrice | currency }}</td>
+          <td>
+            <a>Ver detalle</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
