@@ -5,18 +5,20 @@
         <h2>Carrito de compras</h2>
       </div>
       <div class="cart-list__items">
-        <app-cart-item></app-cart-item>
-        <nz-divider></nz-divider>
-        <app-cart-item></app-cart-item>
-        <nz-divider></nz-divider>
-        <app-cart-item></app-cart-item>
-        <nz-divider></nz-divider>
+        <ng-container *ngFor="let item of itemsCart">
+          <app-cart-item
+            [id]="item.id"
+            [itemData]="item"
+            [itemsCart]="itemsCart"
+          ></app-cart-item>
+          <nz-divider></nz-divider>
+        </ng-container>
       </div>
     </div>
     <div class="cart_list__summary-purchase" nz-col nzXs="24" nzSm="24" nzMd="6" nzLg="6" nzXl="6">
       <app-summary-purchase
         [total]="total"
-        (onClick)="createOrder()"
+        (onClick)="createOrder($event)"
       ></app-summary-purchase>
     </div>
   </div>

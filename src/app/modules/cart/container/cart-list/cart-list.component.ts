@@ -6,6 +6,7 @@ import {Product} from '../../../products/models/product.model';
 import {CartService} from '../../services/cart.service';
 import {ChangeCarStatusAction} from '../../../../../state/actions/cart.actions';
 import {ItemCart} from '../../models/cart.models';
+import {sumCollection} from '../../../../shared/utils/mcs-match';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class CartListComponent implements OnInit {
   getProducts(): void {
     this.store.select('cart').subscribe(data => {
       this.itemsCart = data.products;
-      this.total = this.getTotalPrice(this.itemsCart);
+      this.total = sumCollection(this.itemsCart, 'price', 'quantity');
     });
   }
 
@@ -46,19 +47,14 @@ export class CartListComponent implements OnInit {
     );
   }
 
-  createOrder(): void {
+  createOrder($event): void {
     if (this.itemsCart.length === 0) {
       return;
     }
-
     this.cartService.createOrder(this.itemsCart);
-    this.router.navigate(['/confirmacion']);
+    this.router.navigate(['/confirmacion-orden']);
     this.cartService.deleteCart();
-    this.store.dispatch( new ChangeCarStatusAction() );
-  }
-
-  private getTotalPrice(products: Product[]): number {
-    return products.reduce((a, b) => a + b.price, 0);
+    this.store.dispatch( new ChangeCarStatusAction());
   }
 
 

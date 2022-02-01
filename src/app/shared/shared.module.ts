@@ -5,22 +5,29 @@ import {NzCardModule} from 'ng-zorro-antd/card';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzDividerModule} from 'ng-zorro-antd/divider';
+import { AmoutControlComponent } from './components/amout-control/amout-control.component';
+import {NzInputModule} from 'ng-zorro-antd/input';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    SummaryPurchaseComponent
+    SummaryPurchaseComponent,
+    AmoutControlComponent
   ],
-  exports: [
-    SummaryPurchaseComponent
-  ],
+    exports: [
+        SummaryPurchaseComponent,
+        AmoutControlComponent
+    ],
   imports: [
     CommonModule,
     NzCardModule,
     NzGridModule,
     NzButtonModule,
-    NzDividerModule
+    NzDividerModule,
+    NzInputModule,
+    ReactiveFormsModule,
   ]
 })
 export class SharedModule { }

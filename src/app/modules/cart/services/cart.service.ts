@@ -45,7 +45,6 @@ export class CartService {
       .snapshotChanges()
       .pipe(
         map(data => {
-          console.log('aaaa', data);
           return data.map((document: any) => {
             return {
               id: document.payload.doc.id,
@@ -54,15 +53,17 @@ export class CartService {
           });
         })
       ).subscribe((collection: any) => {
-      this.store.dispatch(new SelectAllProductCart(collection));
+        console.log(collection);
+        this.store.dispatch(new SelectAllProductCart(collection));
     });
   }
 
   addCart(itemCart: ItemCart): void {
+    const id = this.afs.createId();
+    itemCart.id = id;
     const user = this.authorizationService.getUser();
-    this.afs.doc(`Cart/${user.uid}/`)
-      .collection('products')
-      .add({...itemCart});
+    this.afs.doc(`Cart/${user.uid}`)
+      .collection(`products`).doc(id).set(itemCart);
   }
 
   deleteItemCart(product: Product): Promise<any> {
@@ -72,14 +73,11 @@ export class CartService {
 
   deleteCart(): void {
     const user: User = this.authorizationService.getUser();
-
-    this.store.select('cart').subscribe((data: any) => {
-        this.products = data.cart;
-      }
-    );
-
-    this.products.forEach(element => {
-      this.afs.doc(`/Cart/${user.uid}/products/${element.id}`).delete();
+    this.store.select('cart').subscribe( data => {
+      this.products = data.products;
+      this.products.forEach(element => {
+        this.afs.doc(`Cart/${user.uid}/products/${element.id}`).delete();
+      });
     });
   }
 
