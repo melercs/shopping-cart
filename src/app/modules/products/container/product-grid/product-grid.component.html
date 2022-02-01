@@ -3,10 +3,21 @@
     <h2 class="product-grid__title">Elige un producto</h2>
   </div>
   <div class="product-grid__grids">
-    <app-product-card
-      *ngFor="let product of products"
-      [product]="product"
-      (addCart)="addCart($event)"
-    ></app-product-card>
+    <ng-container *ngIf="!loading; else skeletonTemplate">
+      <app-product-card
+        *ngFor="let product of products"
+        [product]="product"
+        (addCart)="addCart($event)"
+      ></app-product-card>
+    </ng-container>
   </div>
 </div>
+
+<ng-template #skeletonTemplate>
+  <app-product-card
+    *ngFor="let data of [].constructor(20)"
+    [isLoading]="true"
+    [product]="null"
+    (addCart)="addCart($event)"
+  ></app-product-card>
+</ng-template>

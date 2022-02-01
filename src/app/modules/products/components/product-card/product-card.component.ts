@@ -8,8 +8,10 @@ import {Product} from '../../models/product.model';
 })
 export class ProductCardComponent implements OnInit {
 
-  @Input() product: Product;
+  @Input() isLoading;
+  @Input() product?: Product;
   @Output() addCart = new EventEmitter<Product>();
+
   constructor() { }
 
   ngOnInit(): void {

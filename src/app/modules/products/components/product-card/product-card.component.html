@@ -1,22 +1,63 @@
-<nz-card class="product-card" nzHoverable style="width:240px">
-  <div>
-    <img
-      alt="example"
-      src="{{ product?.image }}"
-      class="product-card__img"
-    />
-  </div>
-  <div class="product-card__meta">
-    <p class="product-card__name">{{ product?.name || '-'}}</p>
-    <div class="product-card__price">
-      <span>{{ product?.price | currency}}</span>
-      <span>C/U</span>
+<nz-card class="product-card" nzHoverable style="width:240px;">
+  <ng-container *ngIf="!isLoading; else skletetonTemplate">
+    <div>
+      <img
+        alt="example"
+        src="{{ product?.image }}"
+        class="product-card__img"
+      />
     </div>
-  </div>
-  <button
-    nz-button
-    nzType="primary"
-    class="product-card__btn-add-cart"
-    (click)="add(product)"
-  >Elegir</button>
+    <div class="product-card__meta">
+      <p class="product-card__name">{{ product?.name || '-'}}</p>
+      <div class="product-card__price">
+        <span>{{ product?.price | currency}}</span>
+        <span>C/U</span>
+      </div>
+    </div>
+    <button
+      nz-button
+      nzType="primary"
+      class="product-card__btn-add-cart"
+      (click)="add(product)"
+    >Elegir</button>
+  </ng-container>
 </nz-card>
+
+
+<ng-template #skletetonTemplate>
+  <nz-skeleton-element
+    nzType="image"
+    [nzActive]="true"
+    style="text-align: center"
+  ></nz-skeleton-element>
+  <br />
+  <br />
+  <nz-space nzSize="middle">
+    <nz-skeleton-element
+      *nzSpaceItem
+      nzType="button"
+      [nzActive]="true"
+      [nzSize]="'default'"
+      style="width: 100px"
+    ></nz-skeleton-element>
+    <nz-skeleton-element
+      *nzSpaceItem
+      nzType="avatar"
+      [nzActive]="true"
+      [nzSize]="'default'"
+      [nzShape]="'circle'"
+    ></nz-skeleton-element>
+  </nz-space>
+  <br>
+  <nz-divider></nz-divider>
+  <nz-space>
+    <nz-skeleton-element
+      *nzSpaceItem
+      nzType="input"
+      [nzActive]="true"
+      [nzSize]="'small'"
+      style="width: 200px"
+    ></nz-skeleton-element>
+  </nz-space>
+</ng-template>
+

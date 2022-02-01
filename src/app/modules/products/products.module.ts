@@ -5,6 +5,9 @@ import {ProductCardComponent} from './components/product-card/product-card.compo
 import {ProductsRoutingModule} from './products-routing.module';
 import {NzCardModule} from 'ng-zorro-antd/card';
 import {NzButtonModule} from 'ng-zorro-antd/button';
+import {NzDividerModule} from 'ng-zorro-antd/divider';
+import {NzSkeletonModule} from 'ng-zorro-antd/skeleton';
+import {NzSpaceModule} from 'ng-zorro-antd/space';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import {NzButtonModule} from 'ng-zorro-antd/button';
     CommonModule,
     ProductsRoutingModule,
     NzCardModule,
-    NzButtonModule
+    NzButtonModule,
+    NzDividerModule,
+    NzSkeletonModule,
+    NzSpaceModule
   ]
 })
 export class ProductsModule { }
