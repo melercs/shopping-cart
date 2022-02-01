@@ -1,0 +1,14 @@
+.confirm-order {
+  margin: 30px auto 0 auto;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-top: 40px;
+  height: calc(100vh - 200px);
+
+  &__icon {
+    font-size: 3em;
+    color: #389180;
+  }
+}

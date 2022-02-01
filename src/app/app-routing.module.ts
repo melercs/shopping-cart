@@ -24,6 +24,11 @@ const routes: Routes = [
         path: 'carrito',
         loadChildren: () => import('./modules/cart/cart.module').then(modules => modules.CartModule),
         canLoad: [AuthorizationGuard]
+      },
+      {
+        path: 'confirmacion-orden',
+        loadChildren: () => import('./modules/confirm/confirm.module').then(modules => modules.ConfirmModule),
+        canLoad: [AuthorizationGuard]
       }
     ]
   },
